@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>귀여운 고양이 영상</title>
+    <title>귀여운 고양이 영상 - Vimeo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,27 +19,40 @@
             color: #333;
             margin-bottom: 30px;
         }
-        video {
-            max-width: 90%;
-            border: 5px solid #fff;
+        /* Vimeo 플레이어를 중앙에 정렬하고 반응형으로 만듭니다. */
+        .video-container {
+            width: 90%;
+            max-width: 800px;
+            /* 16:9 비율을 유지하기 위한 패딩: (300/400) * 100 = 75% */
+            padding-bottom: 75%; 
+            position: relative;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
-    <h1>귀여운 고양이가 인사하는 짧은 영상 🐾</h1>
+    <h1>Vimeo에서 시청하는 고양이 영상 🐾</h1>
 
-    <video 
-        src="Hailuo_Video_귀여운 고양이가 인사하는 짧은 영상_444459651466813440.mp4" 
-        controls 
-        autoplay 
-        loop 
-        muted
-        playsinline
-    >
-        죄송합니다. 사용하시는 브라우저가 비디오 태그를 지원하지 않습니다.
-    </video>
+    <div class="video-container">
+        <iframe 
+            src="https://player.vimeo.com/video/1135642003?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+            title="Hailuo_Video_귀여운 고양이가 인사하는 짧은 영상_444459651466813440"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+    </div>
+    
+    <p style="margin-top: 30px; color: #666;">휴대폰에서도 자동으로 화면에 맞게 재생됩니다.</p>
 
 </body>
 </html>
