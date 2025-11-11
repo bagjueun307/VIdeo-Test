@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>귀여운 고양이 영상 - 버튼 재생</title>
+    <title>유튜브 영상 버튼 재생</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
         }
         /* 버튼 스타일 */
         #playButton {
-            background-color: #0084ff; /* Vimeo의 상징색과 유사 */
+            background-color: #ff0000;
             color: white;
             padding: 15px 30px;
             font-size: 1.2em;
@@ -32,14 +32,14 @@
             margin-bottom: 30px;
         }
         #playButton:hover {
-            background-color: #006bb3;
+            background-color: #cc0000;
         }
         
         /* 비디오 컨테이너 스타일 */
         .video-container {
             width: 90%;
             max-width: 800px;
-            padding-bottom: 75%; 
+            padding-bottom: 56.25%; /* 16:9 비율 유지를 위함 */
             position: relative;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
@@ -64,41 +64,36 @@
     </style>
 </head>
 <body>
-    <h1>Vimeo 고양이 영상 미리보기 🐾</h1>
+    <h1>유튜브 영상 미리보기</h1>
 
     <button id="playButton" onclick="showVideo()">▶️ 영상 보기</button>
 
     <div id="videoContainer" class="video-container">
+        
         <iframe 
-            id="vimeoPlayer"
-            src="https://player.vimeo.com/video/1135642003?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" 
-            title="Hailuo_Video_귀여운 고양이가 인사하는 짧은 영상_444459651466813440"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>
-    </div>
+            id="youtubePlayer"
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE?autoplay=1" 
+            title="YouTube video player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
+        </div>
     
-    <p style="margin-top: 30px; color: #666;">버튼을 누르면 영상이 바로 재생됩니다.</p>
-
     <script>
         function showVideo() {
             const container = document.getElementById('videoContainer');
             const button = document.getElementById('playButton');
-            const iframe = document.getElementById('vimeoPlayer');
 
             // 1. 비디오 컨테이너를 보이게 합니다.
             container.classList.add('show');
             
-            // 2. 버튼을 숨깁니다. (다시 누를 필요가 없으므로)
+            // 2. 버튼을 숨깁니다.
             button.style.display = 'none';
 
-            // 3. Vimeo 영상이 자동 재생되도록 src를 업데이트합니다.
-            // 기존 src에 '&autoplay=1' 매개변수가 추가되어 있어야 합니다. (위 코드에 이미 반영됨)
-            // iframe.src += '&autoplay=1'; 
-            
-            // Note: 현재 Vimeo 임베드 코드에는 autoplay=1이 이미 적용되어 있지만, 
-            // 일부 브라우저에서는 이 방식으로 자동 재생이 되지 않을 수 있습니다. 
-            // 가장 확실한 방법은 Vimeo Player API를 사용하는 것이지만, 이 코드는 간단한 HTML/JS로 구현했습니다.
+            // 3. 브라우저가 iframe을 로드하게 하여 자동 재생을 시작합니다.
+            // (이미 src에 ?autoplay=1이 있으므로 별도 코드는 필요하지 않으나, 
+            // 혹시 재생이 안 될 경우 iframe.src = iframe.src; 코드를 추가해 재로드를 시도할 수 있습니다.)
         }
     </script>
 </body>
